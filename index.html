@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="tr" data-accent="brass">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAHAL ATÖLYE — Erkek Bakım &amp; Ustura Evi | Online Randevu</title>
+  <meta name="description" content="İstanbul Nişantaşı, Karaköy ve İzmir Alsancak şubelerimizde geleneksel sıcak havlu ustura tıraşı, anatomik saç kesimi ve VIP bakım ritüelleri için saniyeler içinde online randevu alın." />
+
+  <!-- Google Fonts with full Turkish latin-ext glyph support -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+  <!-- =====================================================================
+       WHITE-LABEL DEMO CONTROL RIBBON (FOR SALON OWNERS PRESENTATION)
+       ===================================================================== -->
+  <div class="demo-Ribbon" role="region" aria-label="White-Label Demo Kontrol Çubuğu">
+    <div class="container demo-ribbon-inner">
+      <div class="demo-ribbon-left">
+        <span class="wl-tag">White-Label Demo</span>
+        <span>Müşteri sitesi ve usta takvimi anlık senkronize çalışır.</span>
+      </div>
+
+      <div class="demo-controls">
+        <div class="mode-switch" role="tablist" aria-label="Görünüm Modu">
+          <button type="button" id="mode-btn-client" class="mode-btn active">
+            Müşteri Deneyimi
+          </button>
+          <button type="button" id="mode-btn-admin" class="mode-btn">
+            Atölye Yönetimi
+            <span id="admin-new-badge" class="mode-badge">12</span>
+          </button>
+        </div>
+
+        <button type="button" id="wl-trigger-btn" class="wl-trigger-btn">
+          ✦ Marka Özelleştir
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- White-Label Live Customizer Popover -->
+  <aside id="wl-popover" class="wl-popover" aria-label="Marka Özelleştirme Paneli">
+    <h4>Kendi Markanızla Görün</h4>
+    <p>Berber salonunuzun adını yazın; tüm site, randevu fişi ve WhatsApp mesajı anında güncellensin.</p>
+
+    <div class="wl-field">
+      <label for="wl-brand-input">Salon / Marka Adı</label>
+      <input type="text" id="wl-brand-input" class="wl-input" value="MAHAL ATÖLYE" maxlength="28" />
+    </div>
+
+    <div class="wl-field">
+      <label for="wl-tagline-input">Alt Başlık / İmza</label>
+      <input type="text" id="wl-tagline-input" class="wl-input" value="Erkek Bakım & Ustura Evi" maxlength="38" />
+    </div>
+
+    <div class="wl-field">
+      <label>Kurumsal Vurgu Tonu</label>
+      <div class="swatch-row">
+        <button type="button" class="swatch-btn active" data-swatch="brass">
+          <span class="swatch-dot" style="background:hsl(35,52%,56%)"></span>
+          Pirinç
+        </button>
+        <button type="button" class="swatch-btn" data-swatch="olive">
+          <span class="swatch-dot" style="background:hsl(84,28%,52%)"></span>
+          Zeytin
+        </button>
+        <button type="button" class="swatch-btn" data-swatch="copper">
+          <span class="swatch-dot" style="background:hsl(20,56%,54%)"></span>
+          Bakır
+        </button>
+      </div>
+    </div>
+
+    <button type="button" id="reset-demo-btn" class="action-btn" style="margin-top:8px;">
+      ↺ Demo Verilerini Sıfırla
+    </button>
+  </aside>
+
+  <!-- =====================================================================
+       STICKY ARCHITECTURAL HEADER
+       ===================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-mark" id="header-logo-link">
+        <span class="brand-title" data-brand-name>MAHAL ATÖLYE</span>
+        <span class="brand-sub" data-brand-tagline>Erkek Bakım &amp; Ustura Evi</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Ana Menü">
+        <a href="#rituel-menusu">Hizmet &amp; Ritüeller</a>
+        <a href="#ustalarimiz">Başberberler</a>
+        <a href="#randevu-studyo">Online Randevu</a>
+        <a href="#subelerimiz">Şubeler</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="branch-pill-select" title="Aktif Şube Seçimi">
+          <span style="color:var(--accent);font-size:0.75rem;">●</span>
+          <select id="header-branch-select" class="js-branch-select" aria-label="Şube Seçiniz"></select>
+        </div>
+        <a href="#randevu-studyo" id="header-cta-btn" class="btn-primary">Randevu Al</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       VIEW 1: CLIENT WEBSITE & BOOKING EXPERIENCE (MÜŞTERİ DENEYİMİ)
+       ===================================================================== -->
+  <main class="client-view">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-meta-line">
+            <span>İSTANBUL</span>
+            <span class="sep">·</span>
+            <span>NİŞANTAŞI &amp; KARAKÖY</span>
+            <span class="sep">·</span>
+            <span>İZMİR ALSANCAK</span>
+          </div>
+
+          <h1 class="display-xl">
+            Geleneksel Ustura Sanatı, <em>Kusursuz Zamanlama.</em>
+          </h1>
+
+          <p class="hero-lead">
+            Telefon trafiği ve bekleme koltuğu olmadan; dilediğiniz şubeden, kendi ustanızı ve ikram kahvenizi seçerek otuz saniyede yerinizi ayırtın.
+          </p>
+
+          <!-- Instant Quick-Book Architectural Bar -->
+          <div class="quick-book-bar" role="group" aria-label="Hızlı Randevu Başlatıcı">
+            <div class="qb-cell">
+              <label class="qb-label" for="hero-branch-select">Şube</label>
+              <select id="hero-branch-select" class="qb-select js-branch-select"></select>
+            </div>
+            <div class="qb-cell">
+              <label class="qb-label" for="qb-service-select">Ritüel / Hizmet</label>
+              <select id="qb-service-select" class="qb-select"></select>
+            </div>
+            <button type="button" id="qb-submit-btn" class="btn-primary">
+              Saat Seç →
+            </button>
+          </div>
+
+          <div class="hero-trust-row">
+            <div class="trust-stat">
+              <strong>4.98 ★</strong>
+              <span>1.260+ Doğrulanmış Misafir</span>
+            </div>
+            <div class="trust-stat">
+              <strong>%0</strong>
+              <span>Bekleme Süresi</span>
+            </div>
+            <div class="trust-stat">
+              <strong>WhatsApp</strong>
+              <span>Anında Onay &amp; Hatırlatma</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="arch-frame">
+            <img src="assets/hero-atelier.jpg" alt="Mahal Atölye Nişantaşı traverten kemerli iç mimari ve deri berber koltukları" />
+            <div class="hero-live-caption">
+              <div>
+                <div id="hero-caption-branch" class="caption-branch-name">Nişantaşı Atölye</div>
+                <div id="hero-caption-addr" class="caption-branch-addr">Abdi İpekçi Cad. No: 42/A · Vale &amp; Espresso Bar</div>
+              </div>
+              <div id="hero-caption-slots" class="caption-slots-tag">Bugün 14 Müsait Saat</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE RITUALS LEDGER -->
+    <section id="rituel-menusu" class="services-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-copy">
+            <span class="eyebrow">Zanaat &amp; Bakım Menüsü</span>
+            <h2 class="display-lg">Her Kesim Bir <em>Atölye Ritüeli.</em></h2>
+            <p class="section-sub">
+              Birden fazla işlemi birleştirerek kendi bakım paketinizi oluşturabilirsiniz; toplam süre ve ücret otomatik hesaplanır.
+            </p>
+          </div>
+
+          <div id="category-tabs" class="category-tabs" role="tablist" aria-label="Hizmet Kategorileri"></div>
+        </div>
+
+        <div class="services-layout">
+          <div id="menu-ledger" class="menu-ledger"></div>
+
+          <aside class="ritual-editorial-card">
+            <img src="assets/ritual-shave.jpg" alt="El yapımı ustura, sandal ağacı tıraş köpüğü ve buharlı keten havlular" loading="lazy" />
+            <div class="ritual-card-body">
+              <span class="eyebrow">Atölye İmzası</span>
+              <h3>Sıcak Keten Havlu &amp; Sandal Ağacı</h3>
+              <p>
+                Tüm randevularımızda taş değirmen Türk kahvesi veya soğuk espresso ikramımız, sıcak okaliptüs havlu kompresi ve saç derisi tonik masajı standarttır.
+              </p>
+              <ul class="complimentary-list">
+                <li><span>Karşılama İkramı</span><span>ÜCRETSİZ</span></li>
+                <li><span>Kerastase Arındırıcı Yıkama</span><span>DAHİL</span></li>
+                <li><span>Ense &amp; Kulak Kontür Rötuşu (10 Gün)</span><span>ÜCRETSİZ</span></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- MASTER BARBERS SHOWCASE -->
+    <section id="ustalarimiz" class="masters-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-copy">
+            <span class="eyebrow">Başberberler &amp; Ustalar</span>
+            <h2 class="display-lg">Makasın ve Usturanın <em>Ehil Elleri.</em></h2>
+            <p class="section-sub">
+              Ustanızın uzmanlık alanını ve bugün kalan en erken boş saatini inceleyip doğrudan takvimine geçin.
+            </p>
+          </div>
+        </div>
+
+        <div id="masters-grid" class="masters-grid"></div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE 4-STEP BOOKING STUDIO (HONED TRAVERTINE SECTION) -->
+    <section id="randevu-studyo" class="booking-studio-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-copy">
+            <span class="eyebrow eyebrow-ink">Canlı Rezervasyon Defteri</span>
+            <h2 class="display-lg">Randevunuzu <em>Kişiselleştirin.</em></h2>
+            <p class="section-sub" style="color:var(--ink-secondary)">
+              Üyelik şifresi gerekmez. Seçtiğiniz saat anında usta takviminde bloke edilir ve WhatsApp onay kartınız oluşturulur.
+            </p>
+          </div>
+        </div>
+
+        <div class="booking-grid">
+          <div class="booking-steps-panel">
+
+            <!-- STEP 01 -->
+            <div class="step-block">
+              <div class="step-header">
+                <div class="step-title-wrap">
+                  <span class="step-num">ADIM 01</span>
+                  <h3 class="step-title">Şube &amp; Hizmet Seçimi</h3>
+                </div>
+                <span class="step-hint">Çoklu hizmet seçebilirsiniz</span>
+              </div>
+
+              <div id="studio-branch-grid" class="studio-branch-grid"></div>
+              <div id="studio-service-list" class="studio-service-list"></div>
+            </div>
+
+            <!-- STEP 02 -->
+            <div class="step-block">
+              <div class="step-header">
+                <div class="step-title-wrap">
+                  <span class="step-num">ADIM 02</span>
+                  <h3 class="step-title">Başberber / Usta Tercihi</h3>
+                </div>
+                <span class="step-hint">Müsaitlik ustaya göre güncellenir</span>
+              </div>
+
+              <div id="studio-usta-grid" class="studio-usta-grid"></div>
+            </div>
+
+            <!-- STEP 03 -->
+            <div class="step-block">
+              <div class="step-header">
+                <div class="step-title-wrap">
+                  <span class="step-num">ADIM 03</span>
+                  <h3 class="step-title">Tarih &amp; Müsait Saatler</h3>
+                </div>
+                <span class="step-hint">Üzeri çizili saatler doludur</span>
+              </div>
+
+              <div id="date-strip" class="date-strip"></div>
+              <div id="slots-container"></div>
+            </div>
+
+            <!-- STEP 04 -->
+            <div class="step-block">
+              <div class="step-header">
+                <div class="step-title-wrap">
+                  <span class="step-num">ADIM 04</span>
+                  <h3 class="step-title">Misafir Bilgileri &amp; İkram Tercihi</h3>
+                </div>
+                <button type="button" id="autofill-demo-client" style="font-size:0.78rem;font-weight:600;color:hsl(28,55%,36%);text-decoration:underline;">
+                  ⚡ Örnek Müşteri Doldur
+                </button>
+              </div>
+
+              <div class="form-two-col">
+                <div class="studio-field">
+                  <label for="client-name-input">Adınız Soyadınız</label>
+                  <input type="text" id="client-name-input" class="studio-input" placeholder="Örn: Emre Soyluoğlu" autocomplete="name" />
+                </div>
+                <div class="studio-field">
+                  <label for="client-phone-input">Cep Telefonu (WhatsApp Onay)</label>
+                  <input type="tel" id="client-phone-input" class="studio-input mono" placeholder="0 (532) 000 00 00" autocomplete="tel" />
+                </div>
+              </div>
+
+              <div class="hospitality-box">
+                <div class="hosp-title">Atölye Karşılama İkramınız (Ücretsiz)</div>
+                <div id="drink-chips" class="chip-group"></div>
+
+                <div class="quiet-toggle">
+                  <div>
+                    <strong>Sessiz Kesim Deneyimi</strong>
+                    <div style="font-size:0.76rem;color:var(--ink-secondary)">Sadece stil danışmanlığı yapılır; sohbet olmadan sakin bir seans geçirmek isteyen misafirlerimiz içindir.</div>
+                  </div>
+                  <button type="button" id="quiet-toggle-btn" aria-label="Sessiz Kesim Modunu Aç/Kapat">
+                    <div id="quiet-switch" class="switch-pill"></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- STICKY SUMMARY LEDGER -->
+          <aside class="booking-summary-card" aria-label="Randevu Özeti">
+            <div class="summary-header">
+              <div class="summary-brand" data-brand-name>MAHAL ATÖLYE</div>
+              <div id="sum-branch" class="summary-branch">Nişantaşı Atölye</div>
+            </div>
+
+            <div class="summary-meta-rows">
+              <div class="s-row">
+                <span>Usta</span>
+                <strong id="sum-barber">İlk Müsait Başberber</strong>
+              </div>
+              <div class="s-row">
+                <span>Tarih &amp; Saat</span>
+                <strong id="sum-datetime" class="mono">—</strong>
+              </div>
+              <div class="s-row">
+                <span>Toplam Süre</span>
+                <strong id="sum-duration" class="mono">60 Dakika</strong>
+              </div>
+              <div class="s-row">
+                <span>Misafirperverlik</span>
+                <strong id="sum-hosp">Sade Türk Kahvesi</strong>
+              </div>
+            </div>
+
+            <div id="sum-services-list" class="summary-services-list"></div>
+
+            <div class="summary-total-box">
+              <span class="summary-total-label">Ödenecek Tutar</span>
+              <span id="sum-total-price" class="summary-total-price">₺1.450</span>
+            </div>
+
+            <button type="button" id="submit-booking-btn" class="btn-primary submit-booking-btn">
+              Randevuyu Onayla &amp; Kart Oluştur →
+            </button>
+
+            <div id="booking-error" class="form-error-msg" role="alert"></div>
+
+            <p class="summary-note">
+              Ön ödeme zorunluluğu yoktur. Ödemenizi işlem sonunda nakit veya kredi kartıyla atölyemizde yapabilirsiniz.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating Service Shortcut Tray -->
+  <div id="floating-tray" class="floating-tray">
+    <div class="tray-info">
+      <span id="tray-summary-text">1 Hizmet · 60 dk</span>
+      <span>·</span>
+      <span id="tray-summary-price" class="tray-price">₺1.450</span>
+    </div>
+    <a href="#randevu-studyo" class="btn-primary" style="padding:8px 16px;border-radius:999px;font-size:0.8rem;">
+      Saat Seçimine Geç →
+    </a>
+  </div>
+
+  <!-- =====================================================================
+       VIEW 2: OWNER & BARBER STUDIO MANAGEMENT (ATÖLYE YÖNETİMİ)
+       ===================================================================== -->
+  <section class="admin-view" aria-label="Atölye Yönetim ve Usta Takvimi Paneli">
+    <div class="container">
+
+      <div class="admin-top-bar">
+        <div>
+          <span class="eyebrow">Atölye Komuta Merkezi</span>
+          <h2 class="display-md" style="margin-top:6px;">
+            <span data-brand-name>MAHAL ATÖLYE</span> — <span id="admin-branch-label" style="color:var(--accent)">Nişantaşı Atölye</span>
+          </h2>
+          <p style="font-size:0.86rem;color:var(--text-sand);margin-top:4px;">
+            Herhangi bir randevu kartına tıklayarak tahsilat alabilir, koltuk durumunu değiştirebilir veya saati boşa çıkarabilirsiniz.
+          </p>
+        </div>
+
+        <div class="admin-actions-row">
+          <div class="branch-pill-select">
+            <span style="color:var(--accent);font-size:0.75rem;">Şube:</span>
+            <select class="js-branch-select" aria-label="Yönetim Şube Seçimi"></select>
+          </div>
+          <button type="button" id="open-quickadd-btn" class="btn-primary">
+            + Hızlı Kayıt / Mola Kapat
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Strip in TRY (₺) -->
+      <div class="kpi-strip">
+        <div class="kpi-cell">
+          <div class="kpi-label">Günlük Beklenen Ciro</div>
+          <div id="kpi-revenue" class="kpi-value">₺14.050</div>
+          <div id="kpi-collected" class="kpi-sub">Kasada Tahsil Edilen: ₺3.300</div>
+        </div>
+        <div class="kpi-cell">
+          <div class="kpi-label">Koltuk Doluluk Oranı</div>
+          <div id="kpi-occupancy" class="kpi-value">%64</div>
+          <div class="kpi-sub"><span class="up">▲ %14</span> geçen haftaya göre</div>
+        </div>
+        <div class="kpi-cell">
+          <div class="kpi-label">Aktif Randevular</div>
+          <div id="kpi-count" class="kpi-value">10 Randevu</div>
+          <div id="kpi-new-sub" class="kpi-sub">Tümü onaylandı</div>
+        </div>
+        <div class="kpi-cell">
+          <div class="kpi-label">WhatsApp Oto-Hatırlatma</div>
+          <div class="kpi-value">%98.6</div>
+          <div class="kpi-sub"><span class="up">Aktif</span> · Randevuya 2 saat kala SMS/WP</div>
+        </div>
+      </div>
+
+      <!-- Date & Sub-View Toolbar -->
+      <div class="admin-toolbar">
+        <div id="admin-date-tabs" class="admin-date-tabs"></div>
+
+        <div class="admin-subview-tabs">
+          <button type="button" class="adm-tab active" data-adm-subview="calendar">Usta Takvim Çizelgesi</button>
+          <button type="button" class="adm-tab" data-adm-subview="list">Randevu &amp; İkram Listesi</button>
+        </div>
+      </div>
+
+      <!-- Multi-Barber Visual Schedule Board -->
+      <div id="schedule-board-wrap" class="schedule-board-wrap">
+        <div class="schedule-board">
+          <div id="schedule-head" class="schedule-head"></div>
+          <div id="schedule-body" class="schedule-body"></div>
+        </div>
+      </div>
+
+      <!-- Table List Alternative View -->
+      <div id="admin-list-panel" class="admin-list-panel">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Saat</th>
+              <th>Misafir</th>
+              <th>Usta</th>
+              <th>Hizmet &amp; İkram Notu</th>
+              <th>Tutar</th>
+              <th>Durum</th>
+            </tr>
+          </thead>
+          <tbody id="admin-table-body"></tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       CONFIRMATION DIGITAL TICKET MODAL (QR + WHATSAPP + ICS)
+       ===================================================================== -->
+  <div id="ticket-modal-backdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="tkt-title">
+    <div class="ticket-modal">
+      <div class="ticket-top">
+        <div>
+          <span class="ticket-status-tag">✓ Randevunuz Onaylandı</span>
+          <h3 id="tkt-title" class="display-md" style="color:var(--text-ivory);">
+            <span id="tkt-brand">MAHAL ATÖLYE</span>
+          </h3>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:0.7rem;color:var(--text-sand);text-transform:uppercase;letter-spacing:0.1em;">Randevu Kodu</div>
+          <div id="tkt-code" class="mono" style="font-size:1.15rem;color:var(--accent);font-weight:600;">#MHL-4821</div>
+        </div>
+      </div>
+
+      <div class="ticket-body">
+        <div class="ticket-grid">
+          <div class="ticket-kv">
+            <div><span>Misafir</span><strong id="tkt-client">—</strong></div>
+            <div><span>Şube</span><strong id="tkt-branch">—</strong></div>
+            <div><span>Başberber / Usta</span><strong id="tkt-barber">—</strong></div>
+            <div><span>Tarih &amp; Saat</span><strong id="tkt-datetime" class="mono">—</strong></div>
+            <div><span>Seçilen Ritüel</span><strong id="tkt-services">—</strong></div>
+          </div>
+
+          <div class="qr-box">
+            <div id="tkt-qr"></div>
+            <div class="mono" style="font-size:0.65rem;color:var(--ink-muted);margin-top:6px;">HIZLI CHECK-IN</div>
+          </div>
+        </div>
+
+        <div id="tkt-whatsapp-msg" class="whatsapp-preview"></div>
+
+        <div class="ticket-actions">
+          <button type="button" id="tkt-goto-admin-btn" class="btn-dark-ink">
+            Yönetim Takviminde Canlı Gör →
+          </button>
+          <button type="button" id="tkt-ics-btn" class="btn-light-ink">
+            📅 Takvime Ekle (.ics)
+          </button>
+        </div>
+
+        <button type="button" id="tkt-close-btn" style="width:100%;margin-top:12px;font-size:0.8rem;color:var(--ink-muted);padding:6px;">
+          Pencereyi Kapat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       ADMIN DRAWER 1: INSPECT & MANAGE APPOINTMENT
+       ===================================================================== -->
+  <div id="inspect-drawer-backdrop" class="drawer-backdrop">
+    <aside class="side-drawer" aria-label="Randevu Detayları">
+      <div class="drawer-head">
+        <h3 class="display-md">Randevu &amp; Kasa Detayı</h3>
+        <button type="button" id="close-inspect-btn" class="close-icon-btn" aria-label="Kapat">✕</button>
+      </div>
+      <div id="inspect-drawer-content" style="display:grid;gap:14px;"></div>
+      <div id="inspect-drawer-actions" class="drawer-actions-stack"></div>
+    </aside>
+  </div>
+
+  <!-- =====================================================================
+       ADMIN DRAWER 2: QUICK WALK-IN / BREAK BLOCKER
+       ===================================================================== -->
+  <div id="quickadd-drawer-backdrop" class="drawer-backdrop">
+    <aside class="side-drawer" aria-label="Hızlı Randevu veya Mola Ekle">
+      <div class="drawer-head">
+        <h3 class="display-md">Telefon / Kapıdan Kayıt</h3>
+        <button type="button" id="close-quickadd-btn" class="close-icon-btn" aria-label="Kapat">✕</button>
+      </div>
+      <p style="font-size:0.84rem;color:var(--text-sand);">
+        Telefonla arayan misafiri ekleyin veya ustanın yemek/cuma molasını kapatın. Seçilen saat web sitesinde otomatik olarak doluya döner.
+      </p>
+
+      <form id="quickadd-form" style="display:grid;gap:14px;">
+        <div class="wl-field">
+          <label for="qa-barber">Usta</label>
+          <select id="qa-barber" class="wl-input"></select>
+        </div>
+        <div class="wl-field">
+          <label for="qa-service">İşlem veya Mola Tipi</label>
+          <select id="qa-service" class="wl-input"></select>
+        </div>
+        <div class="wl-field">
+          <label for="qa-time">Başlangıç Saati</label>
+          <select id="qa-time" class="wl-input mono"></select>
+        </div>
+        <div class="wl-field">
+          <label for="qa-client">Misafir Adı / Mola Açıklaması</label>
+          <input type="text" id="qa-client" class="wl-input" placeholder="Örn: Kerem Bey veya Cuma Molası" />
+        </div>
+        <div class="wl-field">
+          <label for="qa-phone">Telefon (Opsiyonel)</label>
+          <input type="tel" id="qa-phone" class="wl-input mono" placeholder="0 (532) 000 00 00" />
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;margin-top:8px;">
+          Takvime İşle &amp; Online Saati Kapat
+        </button>
+      </form>
+    </aside>
+  </div>
+
+  <!-- =====================================================================
+       SITE FOOTER
+       ===================================================================== -->
+  <footer id="subelerimiz" class="site-footer">
+    <div class="container">
+      <div id="footer-branches" class="footer-branches"></div>
+      <div class="footer-bottom">
+        <div>
+          © 2026 <span data-brand-name>MAHAL ATÖLYE</span> — <span data-brand-tagline>Erkek Bakım &amp; Ustura Evi</span>. Tüm hakları saklıdır.
+        </div>
+        <div>KVKK Aydınlatma Metni · İptal &amp; Değişiklik Politikası · Türkiye Berber Rezervasyon Altyapısı</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast-msg" class="toast-msg" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
